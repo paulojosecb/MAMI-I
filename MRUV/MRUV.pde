@@ -8,7 +8,7 @@ float gravity = 9.8 * 100;
 float currentTime = 0.0;
 
 float initialVelocityX = 600;
-float initialVelocityY = -300;
+float initialVelocityY = -500;
 int initialPositionY = 600;
 
 void setup() {
@@ -53,8 +53,7 @@ float getVelocity(float initialVelocity, float acceleration, float time) {
 }
 
 void printVariables() {
-  String time = "CurrentTime: " + currentTime;
-  text(time, 10, 10, 200, 50);
+  text("CurrentTime: " + currentTime, 10, 10, 200, 50);
   text("Position X: " + positionX, 10, 30, 300, 50);
   text("Position Y: " + positionY, 10, 50, 300, 50);
   text("Velocity X: " + initialVelocityX, 10, 70, 300, 50); // Não varia pois a é a velocidade do MRU
