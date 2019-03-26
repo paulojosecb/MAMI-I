@@ -1,19 +1,24 @@
-float module = 10;
+float module = 50;
 float flagWidth = 20;
 float flagHeight = 14;
+
 PVector flagSize;
+PVector flagPosition;
 
 void setup() {
   size(1200, 800);
+  
   flagSize = new PVector(flagWidth * module, flagHeight * module);
-  drawBrazilianFlag(); //<>//
+  flagPosition= new PVector((width - flagWidth * module) / 2, (height - flagHeight * module) /2);
+  
+  drawBrazilianFlag(flagPosition, flagSize); //<>//
 }
 
-void drawBrazilianFlag() {
+void drawBrazilianFlag(PVector flagPosition, PVector flagSize) {
+  
   clear();
   noStroke();
-  
-  PVector flagPosition = new PVector((width - flagWidth * module) / 2, (height - flagHeight * module) /2);
+
   drawOutsideRectOn(flagPosition, flagSize);
   drawInternalQuadBasedOn(flagPosition, flagSize);
   drawInternalCircleBasedOn(flagPosition, flagSize);
