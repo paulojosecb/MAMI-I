@@ -3,7 +3,7 @@ class Spawner {
   float nextMove;
   float moveCounter;
   
-  float spawnFrequency;
+  float nextSpawn;
   float spawnCounter;
   
   PVector position;
@@ -14,7 +14,7 @@ class Spawner {
     nextMove = 60;
     moveCounter = 0;
     
-    spawnFrequency = 120;
+    nextSpawn = 120;
     spawnCounter = 0;
     
     position = new PVector(100, PositionEnum.LEFT);
@@ -24,14 +24,16 @@ class Spawner {
   
   void update() {
     
-    if (spawnCounter >= spawnFrequency) {
+    if (spawnCounter >= nextSpawn) {
       spawnBall();
       spawnCounter = 0;
+      nextSpawn = randomNext();
     }
     
     if (moveCounter >= nextMove) {
       move();
       moveCounter = 0;
+      nextMove = randomNext();
     }
     
     spawnCounter++;
@@ -62,6 +64,21 @@ class Spawner {
         position.x = PositionEnum.LEFT;
       }
       
+    }
+  
+  }
+  
+  int randomNext() {
+    int randomNum = int(random(1, 4));
+    
+    if (randomNum == 1) {
+      return NextEnum.SHORT;
+    } else if (randomNum == 2) {
+      return NextEnum.MEDIUM;
+    } else if (randomNum == 3) {
+      return NextEnum.LARGE;
+    } else {
+      return NextEnum.XLARGE;
     }
   
   }
