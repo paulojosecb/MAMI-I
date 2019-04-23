@@ -17,7 +17,7 @@ class Spawner {
     nextSpawn = 120;
     spawnCounter = 0;
     
-    position = new PVector(100, PositionEnum.LEFT);
+    position = new PVector(PositionEnum.LEFT, 25);
       
     ballController = bc;
   }
@@ -43,11 +43,11 @@ class Spawner {
 
   void draw() {
     fill(255);
-    rect(position.x, position.y, 50, 100);
+    rect(position.x, position.y, 50, 50);
   }
   
   void spawnBall() {
-    ballController.balls.add(new Ball(new PVector(position.x, position.y + 10)));
+    ballController.balls.add(new Ball(new PVector(position.x, position.y)));
   }
   
   void move() {

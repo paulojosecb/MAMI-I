@@ -2,12 +2,14 @@ class BallController {
   
   float UPDATE_FREQUENCY = 40;
   float frameCounter;
+  GameController gameController;
   
   ArrayList<Ball> balls;
   
-  BallController() {
+  BallController(GameController gc) {
     frameCounter = 0;
     balls = new ArrayList<Ball>();
+    gameController = gc;
   }
  
   void draw() {
@@ -33,7 +35,23 @@ class BallController {
   
   void updateBallsPosition() {
     for(Ball ball : balls) {
-      ball.position.y += 100;
+      
+      if (ball.isSafe == false) {
+        
+         ball.position.y += ball.radius * 2;
+         
+         if ((ball.position.y == gameController.player.position.y) && (ball.position.x == gameController.player.position.x)) {
+           gameController.player.saveBall(ball); //<>//
+         }
+         
+      } else {
+      
+        if (ball.position.y != ball.correctPosition) {
+          ball.position.y += ball.radius;
+        }
+        
+      }
+      
     }
   }
   
