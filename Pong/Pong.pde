@@ -25,7 +25,7 @@ void draw() {
   ballPosition.x += velocity * direction.x;
   ballPosition.y += velocity * direction.y;
   
-  checkInput();
+  //checkInput();
 
   fill(255);
   rectMode(CENTER);
@@ -57,7 +57,7 @@ void checkCollisionWithPlayer() {
   
   if ((ballPosition.y + ballDiameter / 2) >= (playerPosition.y - playerSize.y / 2)) {
     
-    if (ballPosition.y - ballDiameter / 2) <= (playerPosition.y + playerSize.y / 2)) {
+    if ((ballPosition.y - ballDiameter / 2) <= (playerPosition.y + playerSize.y / 2)) {
       
       if ((ballPosition.x + ballDiameter / 2) >= (playerPosition.x - playerSize.x / 2)) {
           
@@ -93,17 +93,17 @@ void checkInput() {
 
 }
 
-//void keyPressed() {
+void keyPressed() {
   
-//  if(key == CODED) {
+  if(key == CODED) {
     
-//    if(keyCode == LEFT) {
-//      playerPosition.x -= playerVelocity;
-//    }
+    if(keyCode == LEFT) {
+      playerPosition.x -= playerVelocity;
+    }
     
-//    if (keyCode == RIGHT) {
-//      playerPosition.x += playerVelocity;
-//    }
+    if (keyCode == RIGHT) {
+      playerPosition.x += playerVelocity;
+    }
   
-//  }
-//}
+  }
+}

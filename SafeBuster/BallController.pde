@@ -23,6 +23,7 @@ class BallController {
     if (frameCounter >= UPDATE_FREQUENCY) {
       updateBallsPosition();
       frameCounter = 0;
+      gameController.player.updateBalls();
     }
     
     frameCounter++;
@@ -34,14 +35,25 @@ class BallController {
   }
   
   void updateBallsPosition() {
+    
+    ArrayList<Ball> ballsToRemove = new ArrayList<Ball>();
+    
     for(Ball ball : balls) {
       
       if (ball.isSafe == false) {
         
          ball.position.y += ball.radius * 2;
          
+         if (ball.position.y  >= height) {
+           gameController.state = GameState.GAMEOVER;
+         }
+         
          if ((ball.position.y == gameController.player.position.y) && (ball.position.x == gameController.player.position.x)) {
-           gameController.player.saveBall(ball); //<>//
+           if (gameController.player.balls < 3) {
+             gameController.player.saveBall();
+             ballsToRemove.add(ball);
+           }
+            //<>//
          }
          
       } else {
@@ -52,6 +64,10 @@ class BallController {
         
       }
       
+    }
+    
+    for (Ball ball: ballsToRemove) {
+      balls.remove(ball);
     }
   }
   

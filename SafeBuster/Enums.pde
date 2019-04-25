@@ -1,5 +1,5 @@
 static abstract class PositionEnum {
-
+  static final int STATION = 100;
   static final int LEFT = 200;
   static final int CENTER = 400;
   static final int RIGHT = 600;
