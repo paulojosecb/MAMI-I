@@ -5,11 +5,14 @@ enum GameState {
 class GameController {
  
   BallController ballController;
+  ImageController imageController;
   Spawner spawner;
   Player player;
-  GameState state; 
+  GameState state;
+  int points;
  
   GameController() {
+    imageController = new ImageController();
     startNewGame();
   }
   
@@ -21,7 +24,9 @@ class GameController {
       player.update();
       draw();
     } else {
-      text("GAME OVER", width/2, height/2);
+      text("GAME OVER", width/2 - 75, height/2);
+      textSize(20);
+      text("Press enter ENTER to restart", width/2-125, height/2 + 25);
       
       if ((keyPressed) && (key == ENTER)) {
         startNewGame();
@@ -34,12 +39,24 @@ class GameController {
     spawner.draw();
     player.draw();
     ballController.draw();
+    textSize(28);
+    fill(0);
+    text("Score: " + points, width - 200, 28);
   }
   
   void startNewGame() {
     ballController = new BallController(this);
-    spawner = new Spawner(ballController);
+    spawner = new Spawner(ballController, imageController.ball, imageController.enemy);
+    
+    points = 0;
+    
     player = new Player(this);
+    player.sprites[0]= imageController.playerEmpty;
+    player.sprites[1] = imageController.player1;
+    player.sprites[2] = imageController.player2;
+    player.sprites[3] = imageController.player3;
+
+    
     state = GameState.PLAYING;
     clear();
   }

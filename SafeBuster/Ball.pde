@@ -4,9 +4,10 @@ class Ball {
   float radius = 25;
   Boolean isSafe = false;
   float correctPosition = 0;
+  PImage sprite;
   
-  Ball(PVector position) {
-    
+  Ball(PVector position, PImage sp) {
+    this.sprite = sp;
     this.position = position;
   
   }
@@ -19,8 +20,11 @@ class Ball {
       fill(255);
     }
     
-    ellipseMode(CORNER);
-    ellipse(position.x + radius/2, position.y, radius, radius);
+
+    //imageMode(CENTER);
+    image(sprite, position.x + 12, position.y);
+    //imageMode(CORNER);
+    
   }
   
 }

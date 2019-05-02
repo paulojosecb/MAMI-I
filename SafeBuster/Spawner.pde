@@ -8,16 +8,22 @@ class Spawner {
   
   PVector position;
   
+  PImage ballSprite;
+  PImage sprite;
+  
   BallController ballController;
 
-  Spawner(BallController bc) {
+  Spawner(BallController bc, PImage bsp, PImage esp) {
     nextMove = 60;
     moveCounter = 0;
     
     nextSpawn = 120;
     spawnCounter = 0;
     
-    position = new PVector(PositionEnum.LEFT, 25);
+    ballSprite = bsp;
+    sprite = esp;
+    
+    position = new PVector(PositionEnum.LEFT, 40);
       
     ballController = bc;
   }
@@ -43,11 +49,12 @@ class Spawner {
 
   void draw() {
     fill(255);
-    rect(position.x, position.y, 50, 50);
+    image(sprite, position.x, position.y);
+    //rect(position.x, position.y, 50, 50);
   }
   
   void spawnBall() {
-    ballController.balls.add(new Ball(new PVector(position.x, position.y)));
+    ballController.balls.add(new Ball(new PVector(position.x, position.y), ballSprite));
   }
   
   void move() {

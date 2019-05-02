@@ -42,9 +42,9 @@ class BallController {
       
       if (ball.isSafe == false) {
         
-         ball.position.y += ball.radius * 2;
+         ball.position.y += 50;
          
-         if (ball.position.y  >= height) {
+         if (ball.position.y  >= 450) {
            gameController.state = GameState.GAMEOVER;
          }
          
@@ -53,8 +53,8 @@ class BallController {
              gameController.player.saveBall();
              ballsToRemove.add(ball);
            }
-            //<>//
-         }
+           
+         } //<>//
          
       } else {
       

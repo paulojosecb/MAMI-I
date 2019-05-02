@@ -8,9 +8,11 @@ class Player {
   int balls;
   GameController gameController;
   State state;
+  PImage[] sprites; 
     
   Player(GameController gc) {
-    position = new PVector(PositionEnum.CENTER, 425);
+    sprites = new PImage[4];
+    position = new PVector(PositionEnum.CENTER, 390);
     balls = 0;
     gameController = gc;
     state = State.RESTING;
@@ -22,13 +24,12 @@ class Player {
   
   void draw() {
     fill(0, 0, 255);
-    rect(position.x, position.y, 50, 125);
-    fill(255);
-    text(balls, position.x + 25, position.y + 20);
+    image(sprites[balls], position.x, position.y);
   }
  
   void saveBall() {
     balls++; //<>//
+    gameController.points++;
   }
   
   void removeBall() {
