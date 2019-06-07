@@ -36,7 +36,6 @@ class GameController {
   }
   
   void draw() {
-    spawner.draw();
     textSize(28);
     fill(0);
     text("Score: " + points, width - 200, 28);

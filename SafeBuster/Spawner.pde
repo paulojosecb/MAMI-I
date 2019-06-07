@@ -1,7 +1,10 @@
 class Spawner {
+    
+  float MAX_POSITION_X = 525;
+  float MIN_POSITION_X = 275;
+  float SPEED = 2;
   
-  float nextMove;
-  float moveCounter;
+  float direction = 1;
   
   float nextSpawn;
   float spawnCounter;
@@ -14,16 +17,13 @@ class Spawner {
   BallController ballController;
 
   Spawner(BallController bc, PImage bsp, PImage esp) {
-    nextMove = 60;
-    moveCounter = 0;
-    
     nextSpawn = 120;
     spawnCounter = 0;
     
     ballSprite = bsp;
     sprite = esp;
     
-    position = new PVector(PositionEnum.LEFT, 40);
+    position = new PVector(width/2, 40);
       
     ballController = bc;
   }
@@ -36,21 +36,15 @@ class Spawner {
       nextSpawn = randomNext();
     }
     
-    if (moveCounter >= nextMove) {
-      move();
-      moveCounter = 0;
-      nextMove = randomNext();
-    }
+    this.move();
+    this.draw();
     
-    spawnCounter++;
-    moveCounter++;
-    
+    spawnCounter++;    
   }
 
   void draw() {
     fill(255);
     image(sprite, position.x, position.y);
-    //rect(position.x, position.y, 50, 50);
   }
   
   void spawnBall() {
@@ -58,21 +52,11 @@ class Spawner {
   }
   
   void move() {
-    
-    if ((position.x == PositionEnum.LEFT) || (position.x == PositionEnum.RIGHT)) {
-      
-      position.x = PositionEnum.CENTER;
-      
-    } else {
-      
-      if (random(0, 1) > 0.5) {
-        position.x = PositionEnum.RIGHT;
-      } else {
-        position.x = PositionEnum.LEFT;
-      }
-      
+    if (position.x >= MAX_POSITION_X || position.x <= MIN_POSITION_X) {
+      direction *= -1;
     }
-  
+    
+    position.x += SPEED * direction;
   }
   
   int randomNext() {

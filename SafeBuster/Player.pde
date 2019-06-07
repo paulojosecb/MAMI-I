@@ -45,7 +45,6 @@ class Player {
   }
 
   void move(int direction) {
-    print(direction);
     if ((direction == -1) && (position.x > 160)) {
       position.x -= speed;
     } else if ((direction == 1) && (position.x < 650)) {

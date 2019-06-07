@@ -17,7 +17,6 @@ class BallController { //<>//
 
   void update() {
       updateBalls();
-      gameController.player.updateBalls();
   }
 
   void addBall(Ball ball) {
@@ -31,8 +30,8 @@ class BallController { //<>//
     for (Ball ball : balls) {
 
       ball.update();
-
-      if ((ball.position.y == gameController.player.position.y) && (ball.position.x == gameController.player.position.x)) {
+      
+      if (ball.collidedWith(gameController.player)){
         if (gameController.player.balls < 3) {
           gameController.player.saveBall();
           ballsToRemove.add(ball);

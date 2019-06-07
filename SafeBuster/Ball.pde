@@ -42,4 +42,13 @@ class Ball {
     }
   }
   
+  Boolean collidedWith(Player player) {
+    if ((this.position.x >= player.position.x - this.sprite.width/2) && (this.position.x <= player.position.x + this.sprite.width)) {
+      if ((this.position.y >= player.position.y) && (this.position.y <= player.position.y + 20)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }
