@@ -54,7 +54,7 @@ class Spawner {
   }
   
   void spawnBall() {
-    ballController.balls.add(new Ball(new PVector(position.x, position.y), ballSprite));
+    ballController.balls.add(new Ball(new PVector(position.x, position.y), ballSprite, ballController));
   }
   
   void move() {

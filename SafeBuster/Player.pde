@@ -5,7 +5,7 @@ enum State { //<>//
 class Player {
 
   PVector position;
-  int speed;
+  int speed = 10;
   int balls;
   GameController gameController;
   State state;
@@ -20,6 +20,8 @@ class Player {
   }
 
   void update() {
+    this.updateBalls();
+    this.draw();
   }
 
   void draw() {
@@ -43,25 +45,11 @@ class Player {
   }
 
   void move(int direction) {
-
-    if (direction == -1) {
-      
-    } else if (direction == 1) {
-
-      if (position.x == PositionEnum.CENTER) {
-        position.x = PositionEnum.RIGHT;
-      } else if (position.x == PositionEnum.LEFT) {
-        position.x = PositionEnum.CENTER;
-      } else if (position.x == PositionEnum.STATION) {
-        position.x = PositionEnum.LEFT;
-        state = State.RESTING;
-      }
-    }
-  }
-
-  void checkInput() {
-
-    if ((keyPressed == true) && (key == CODED)) {
+    print(direction);
+    if ((direction == -1) && (position.x > 160)) {
+      position.x -= speed;
+    } else if ((direction == 1) && (position.x < 650)) {
+       position.x += speed;
     }
   }
 }
