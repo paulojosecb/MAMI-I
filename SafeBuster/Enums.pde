@@ -12,3 +12,11 @@ static abstract class NextEnum {
   static final int LARGE = 360;
   static final int XLARGE = 720;
 }
+
+static abstract class PowerupEnum {
+  static final int SHORT = 1440;
+  static final int MEDIUM = 2880;
+  static final int LARGE = 5660;
+  static final int XLARGE = 12000;
+  
+}

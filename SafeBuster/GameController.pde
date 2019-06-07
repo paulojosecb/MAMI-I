@@ -6,6 +6,7 @@ class GameController {
  
   BallController ballController;
   ImageController imageController;
+  PowerupController powerupController;
   Spawner spawner;
   Player player;
   GameState state;
@@ -22,6 +23,7 @@ class GameController {
       spawner.update();
       ballController.update();
       player.update();
+      powerupController.update();
       draw();
     } else {
       text("GAME OVER", width/2 - 75, height/2);
@@ -43,6 +45,7 @@ class GameController {
   
   void startNewGame() {
     ballController = new BallController(this);
+    powerupController = new PowerupController(this);
     spawner = new Spawner(ballController, imageController.ball, imageController.enemy);
     
     points = 0;
