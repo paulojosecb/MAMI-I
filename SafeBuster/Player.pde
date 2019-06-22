@@ -16,7 +16,7 @@ class Player {
 
   Player(GameController gc) {
     sprites = new PImage[4];
-    position = new PVector(PositionEnum.CENTER, 390);
+    position = new PVector(PositionEnum.CENTER, 440);
     balls = 0;
     gameController = gc;
     state = State.RESTING;
@@ -57,7 +57,7 @@ class Player {
   }
 
   void move(int direction) {
-    if ((direction == -1) && (position.x > 160)) {
+    if ((direction == -1) && (position.x >= 160)) {
       position.x -= speed;
     } else if ((direction == 1) && (position.x < 650)) {
        position.x += speed;
@@ -65,7 +65,7 @@ class Player {
   }
   
   Boolean isOnDroppingZone() {
-    if (this.position.x >= 160 && this.position.x <= 200) {
+    if (this.position.x >= 140 && this.position.x <= 200) {
       return true;
     }
     return false;

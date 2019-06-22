@@ -1,4 +1,4 @@
-//PImage psyc;
+PImage psyc;
 //PShader blur;
 
 PImage originalImage;
@@ -10,30 +10,30 @@ color originalColor, finalColor;
 float r, g, b;
 
 void setup() {
-  size(640,480);
+  size(800,600);
   
-  originalImage = loadImage("psyc.jpg");
-  processImage();
-  image(originalImage, 0,0);
-  image(redImage, 320, 0);
-  image(greenImage, 0, 240);
-  image(blueImage, 320, 240);
+  //originalImage = loadImage("psyc.jpg");
+  //processImage();
+  //image(originalImage, 0,0);
+  //image(redImage, 320, 0);
+  //image(greenImage, 0, 240);
+  //image(blueImage, 320, 240);
   
 
-  //psyc = loadImage("psyc.jpg");
+  psyc = loadImage("psyc.jpg");
   //blur = loadShader("blur.glsl");
-  ////psyc.filter(INVERT);
-  //psyc.filter(DILATE);
-  ////psyc.filter(BLUR, 3);
+  //psyc.filter(INVERT);
+  psyc.filter(THRESHOLD);
+  //psyc.filter(BLUR, 3);
 }
 
-//void draw() {
-//  //image(psyc, 0, 0);
-//  //filter(blur);
-//  float x = dist(0, 0, mouseX, mouseY);
-//  println(x);
-//  background(x, x, x);
-//}
+void draw() {
+  image(psyc, 0, 0);
+  //filter(blur);
+  //float x = dist(0, 0, mouseX, mouseY);
+  //println(x);
+  //background(x, x, x);
+}
 
 void processImage() {
   for (int x = 0; x < 320; x++) {

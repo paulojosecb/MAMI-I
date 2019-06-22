@@ -37,13 +37,13 @@ class Ball {
   }
   
   void checkPosition() {
-    if (position.y >= 450) {
+    if (position.y >= 500) {
       controller.gameOver();
     }
   }
   
   Boolean collidedWith(Player player) {
-    if ((this.position.x >= player.position.x - this.sprite.width/2) && (this.position.x <= player.position.x + this.sprite.width)) {
+    if ((this.position.x >= player.position.x - this.sprite.width/2) && (this.position.x <= player.position.x + this.sprite.width * 2.5)) {
       if ((this.position.y >= player.position.y) && (this.position.y <= player.position.y + 20)) {
         return true;
       }

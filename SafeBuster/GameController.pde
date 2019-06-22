@@ -26,6 +26,9 @@ class GameController {
       powerupController.update();
       draw();
     } else {
+      fill(0,0,0, 100);
+      rect(0, 0, width, height);
+      fill(255);
       text("GAME OVER", width/2 - 75, height/2);
       textSize(20);
       text("Press enter ENTER to restart", width/2-125, height/2 + 25);
@@ -41,12 +44,18 @@ class GameController {
     textSize(28);
     fill(0);
     text("Score: " + points, width - 200, 28);
+    
+    if (powerupController.isPowered) {
+      textSize(22);
+      text("Fast mode", width - 200, 70);
+    }
   }
   
   void startNewGame() {
     ballController = new BallController(this);
     powerupController = new PowerupController(this);
-    spawner = new Spawner(ballController, imageController.ball, imageController.enemy);
+    powerupController.sprite = imageController.powerUp;
+    spawner = new Spawner(ballController, imageController.gold, imageController.enemy);
     
     points = 0;
     
